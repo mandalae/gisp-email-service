@@ -13,7 +13,7 @@ const sendEmail = (mailOptions) => {
   return new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        console.log(error);
+        console.log("Error sending email", error);
         reject(error);
       } else {
         console.log(`Email sent to: ${email} - ${info.response}`);
