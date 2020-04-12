@@ -1,9 +1,7 @@
 "use strict";
 const AWS = require("aws-sdk");
 
-AWS.config.update({
-  region: "eu-west-1",
-});
+AWS.config.update({ region: "eu-west-1" });
 
 const sendEmail = (mailOptions) => {
   const ses = new AWS.SES({ apiVersion: "2010-12-01" });
