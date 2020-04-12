@@ -49,7 +49,7 @@ jobs:
           command: npm version minor -m "Upgraded to %s [ci skip]"
       - run:
           name: Push changes and tags
-          command: git config --global push.default simple && git push && git push --tags
+          command: git push && git push --tags
   deploy:
     docker:
       - image: circleci/node:10.0.0
