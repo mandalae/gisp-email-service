@@ -1,10 +1,3 @@
-variable "smtp_username" {
-  type = string
-}
-variable "smtp_password" {
-  type = string
-}
-
 provider "aws" {
   region = "eu-west-1"
 }
@@ -22,12 +15,4 @@ resource "aws_lambda_function" "GPCovidResponse-EmailService" {
   handler       = "index.handler"
   source_code_hash = "${filebase64sha256("../artifact/covid-backend.zip")}"
   runtime       = "nodejs12.x"
-
-  environment {
-    variables = {
-      SMTP_USERNAME = var.smtp_username,
-      SMTP_PASSWORD = var.smtp_password
-    }
-  }
-
 }
