@@ -5,9 +5,11 @@ AWS.config.update({ region: "eu-west-1" });
 
 const sendEmail = (mailOptions) => {
   const ses = new AWS.SES({ apiVersion: "2010-12-01" });
+  const emailAddress = "hello@gisp.org.uk";
+
   const params = {
     Destination: {
-      ToAddresses: ["theminddepth@gmail.com"],
+      ToAddresses: [emailAddress],
     },
     Message: {
       Body: {
@@ -25,7 +27,7 @@ const sendEmail = (mailOptions) => {
         Data: mailOptions.subject,
       },
     },
-    Source: "hello@gisp.org.uk",
+    Source: emailAddress,
   };
 
   console.log("About to send email, mailOptions:", mailOptions);
