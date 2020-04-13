@@ -15,6 +15,10 @@ const sendEmail = (mailOptions) => {
           Charset: "UTF-8",
           Data: mailOptions.text,
         },
+        Html: {
+          Charset: "UTF-8",
+          Data: mailOptions.html,
+        },
       },
       Subject: {
         Charset: "UTF-8",
@@ -52,11 +56,12 @@ exports.handler = async (event) => {
 
     switch (event.httpMethod) {
       case "POST":
-        const { emailSubject, emailText } = JSON.parse(event.body);
+        const { emailSubject, emailText, emailHtml } = JSON.parse(event.body);
 
         sendEmail({
           subject: emailSubject,
           text: emailText,
+          html: emailHtml,
         })
           .then((res) => {
             done(null, res);
