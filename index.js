@@ -26,12 +26,7 @@ const sendEmail = (mailOptions) => {
 
   console.log("About to send email, mailOptions:", mailOptions);
 
-  return ses
-    .sendEmail(params)
-    .promise()
-    .then((data) => {
-      console.log("Email submitted to SES, data:", data);
-    });
+  return ses.sendEmail(params).promise();
 };
 
 exports.handler = async (event) => {
@@ -57,9 +52,6 @@ exports.handler = async (event) => {
 
     switch (event.httpMethod) {
       case "POST":
-        //const buff = new Buffer(event.body, "base64");
-        //const inputData = buff.toString("ascii");
-
         const { emailSubject, emailText } = JSON.parse(event.body);
 
         sendEmail({
