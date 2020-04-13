@@ -57,10 +57,10 @@ exports.handler = async (event) => {
 
     switch (event.httpMethod) {
       case "POST":
-        const buff = new Buffer(event.body, "base64");
-        const inputData = buff.toString("ascii");
+        //const buff = new Buffer(event.body, "base64");
+        //const inputData = buff.toString("ascii");
 
-        const { emailSubject, emailText } = JSON.parse(inputData);
+        const { emailSubject, emailText } = JSON.parse(event.body);
 
         sendEmail({
           subject: emailSubject,
